@@ -60,7 +60,7 @@ export const login = {
 					</div>
 
 					<div class="row">
-						<button class="btn">SIGN IN</button>
+						<button class="btn">Sign in</button>
 					</div>
 				</form>
 			</div>

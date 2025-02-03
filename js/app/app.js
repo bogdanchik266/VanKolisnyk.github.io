@@ -1,11 +1,13 @@
 import {router} from './router.js';
+import {header} from './widgets/header.js';
 import {msg} from './widgets/msg.js';
+import {popup} from './widgets/popup.js';
 
 document.addEventListener('DOMContentLoaded', function(){
     const main = {
         data() {
             return {
-                url:"https://affiliate.yanbasok.com",
+                url:"http://affiliate.yanbasok.com",
                 user:{name:"", phone:"", email:"", date:"", auth:""},
                 formData:{},
                 title:"",
@@ -80,6 +82,8 @@ document.addEventListener('DOMContentLoaded', function(){
     };
 
     var app = Vue.createApp(main)
+    .component('Header',header)
+    .component('popup',popup)
     .component('msg',msg)
     .use(router)
     .mount('#content')

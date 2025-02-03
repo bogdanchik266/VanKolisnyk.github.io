@@ -64,19 +64,53 @@ export const msg = {
                     this.fadeout(block, 1000);
                 }, 3000);
             }, 100);
+        },
+        confirmFun(title,text){
+            this.code =0;
+            var self =this;
+
+            return new Promise(function(resolve,reject){
+                self.confirmtitle=title;
+                self.confirm=text;
+                self.$refs.confirm.active=1;
+                self.interval=setInterval(function(){
+                    if(self.code>0) resolve();
+                },100);
+
+            }).then(function(){
+                clearInterval(self.interval);
+                self.$refs.confirm.active=0;
+                if(self.code==1){
+                    return true;
+                }
+                if(self.code==2){
+                    return false;
+                }
+            });
+
         }
     },
     template: `
     <div class="alertMsg" v-if="alert">
         <div class="wrapper al">
-            <i class="fas fa-times-circle"></i> {{ alert }}
+            <i class="fas fa-times-circle"></i> {{alert}}
         </div>
     </div>
 
     <div class="succesMsg" v-if="succes">
         <div class="wrapper al">
-            <i class="fas fa-check-circle"></i> {{ succes }}
+            <i class="fas fa-check-circle"></i> {{succes}}
         </div>
     </div>
+
+    <popup ref="confirm" :title="confirmTitle">
+        <div class=" al">
+            <i class="fas fa-info-circle"></i> {{confirm}}
+            <div class="botBtns">
+                <a href="#"  class="btnS" @click.prevent="code=1">Yes</a>
+                <a href="#" class="btnS" @click.prevent="code=2">No</a>
+            </div>
+        </div>
+    </popup>  
     `
 };
