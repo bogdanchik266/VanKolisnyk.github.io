@@ -218,88 +218,87 @@ html, body {
     opacity: 0; 
     transform: translateX(-20px); 
 }
-/* Фон всієї сторінки */
+
 body {
     background-color: #f0f7fa;
     font-family: 'CustomFont', sans-serif;
-    color: #3a3a3a; /* Основний колір тексту */
+    color: #3a3a3a; 
     margin: 0;
     padding: 0;
 }
 
-/* Центрування контенту по горизонталі і вирівнювання зверху */
 .inside-content {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Центруємо по горизонталі */
-    justify-content: flex-start; /* Вирівнюємо зверху */
-    min-height: 100vh; /* Мінімальна висота - весь екран */
-    padding-top: 20px; /* Відступ зверху */
+    align-items: center; 
+    justify-content: flex-start;
+    min-height: 100vh; 
+    padding-top: 20px; 
 }
 
-.wrapper {
+.inside-content:has(.table) .wrapper {
     width: 80%;
     max-width: 1200px;
 }
 
-/* Рядок заголовка та вибору дат */
-.flex {
+.inside-content:has(.table) .flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 15px; /* Відступ перед таблицею */
+    margin-bottom: 15px;
 }
 
-h1 {
+.inside-content:has(.table) h1 {
     text-align: right;
     margin: 0;
     padding: 10px 0;
-    color: #3a3a3a; /* Колір заголовка */
+    color: #3a3a3a;
 }
 
-.w20 {
+.inside-content:has(.table) .w20 {
     width: 20%;
 }
 
-.w60 {
+.inside-content:has(.table) .w60 {
     width: 60%;
     text-align: center;
 }
+
+
 
 input[type="date"] {
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    color: #3a3a3a; /* Колір тексту у полях вибору дати */
+    color: #3a3a3a; 
 }
+ 
 
-/* Центрування таблиці */
 .table {
     width: 100%;
     display: flex;
     justify-content: center;
-}
+}  
 
-/* Таблиця без заокруглених кутів */
 table {
     width: 100%;
     border-collapse: collapse;
     font-family: 'CustomFont', sans-serif;
     color: #3a3a3a;
-}
+} 
 
 
-/* Заголовки */
+
 th {
     background: #f4f4f4;
     padding: 12px;
     text-align: left;
     border-bottom: 2px solid #ddd;
-    color: #3a3a3a; /* Колір тексту у заголовках */
-}
+    color: #3a3a3a; 
+}  
 
-/* Чергування рядків: перший сірий, другий білий */
+
 tbody tr:nth-child(odd) {
     background: #f3f3f3;
 }
@@ -308,14 +307,13 @@ tbody tr:nth-child(even) {
     background: #ffffff;
 }
 
-/* Стилі для комірок */
+
 td {
     padding: 12px;
     border-bottom: 1px solid #ddd;
-    color: #3a3a3a; /* Колір тексту у комірках */
-}
+    color: #3a3a3a; 
+} 
 
-/* Дії */
 .actions {
     text-align: center;
 }
@@ -324,12 +322,12 @@ td {
     color: #3a3a3a;
     text-decoration: none;
     font-size: 16px;
-}
+} 
 
 .actions a:hover {
     color: darkred;
-}
-/* Основний фон для попапу */
+} 
+
 .popup-back {
     position: fixed;
     top: 0;
@@ -339,8 +337,8 @@ td {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
+ 
 
-/* Стилі для самого попапу */
 .popup {
     position: absolute;
     z-index: 1000;
@@ -353,22 +351,22 @@ td {
     transition: all 0.3s ease;
 }
 
-/* Стиль для верхньої частини попапу з текстом */
+
 .popup .flex.head-popup {
-    background-color: #dfe3e9; /* фон для заголовку */
+    background-color: #dfe3e9; 
     padding: 15px;
     border-bottom: 1px solid #ccc;
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} 
 
 .popup .head-title {
     font-size: 18px;
     font-weight: 600;
 }
 
-/* Стилі для кнопки закриття */
+
 .popup .w20 a {
     font-size: 20px;
     color: #333;
@@ -379,12 +377,12 @@ td {
     color: #f00;
 }
 
-/* Стилі для контенту попапу */
+
 .popup-inner {
     padding: 20px;
 }
 
-/* Стилі для кнопок Yes/No */
+
 .popup .botBtns {
     display: flex;
     justify-content: flex-start;
@@ -394,7 +392,7 @@ td {
 
 .popup .btnS {
     padding: 10px 20px;
-    background-color: #00c273; /* Зелений колір для кнопок */
+    background-color: #00c273; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -405,17 +403,17 @@ td {
 }
 
 .popup .btnS:hover {
-    background-color: #00a15d; /* Трохи темніший відтінок зеленого при наведенні */
+    background-color: #00a15d; 
 }
 
-/* Для центрування попапу */
+
 .popup .flex.head-popup {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-/* Центрування попапу по вертикалі */
+
 .popup-back {
     display: flex;
     align-items: center;
@@ -426,4 +424,4 @@ td {
     width: 100%;
     position: fixed;
     z-index: 999;
-}
+}  
