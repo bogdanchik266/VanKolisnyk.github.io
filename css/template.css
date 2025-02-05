@@ -233,7 +233,6 @@ body {
     align-items: center; 
     justify-content: flex-start;
     min-height: 100vh; 
-    padding-top: 20px; 
 }
 
 .inside-content:has(.table) .wrapper {
@@ -244,7 +243,7 @@ body {
 .inside-content:has(.table) .flex {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
     width: 100%;
     margin-bottom: 15px;
 }
@@ -275,29 +274,47 @@ input[type="date"] {
 }
  
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Загальний стиль для таблиці */
 .table {
     width: 100%;
     display: flex;
     justify-content: center;
-}  
+}
 
 table {
     width: 100%;
+    border: 2px solid #ddd; /* Зовнішня обводка */
     border-collapse: collapse;
     font-family: 'CustomFont', sans-serif;
     color: #3a3a3a;
-} 
+    direction: rtl; /* Реверсування стовпців */
+}
 
-
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd; /* Сітка між комірками */
+    text-align: center; /* Центрування вмісту в клітинках */
+}
 
 th {
-    background: #f4f4f4;
-    padding: 12px;
-    text-align: left;
-    border-bottom: 2px solid #ddd;
-    color: #3a3a3a; 
-}  
-
+    background: #ffffff; /* Білий фон для заголовків */
+    color: #3a3a3a;
+    border: none; /* Вимикає сіточки для заголовків */
+}
 
 tbody tr:nth-child(odd) {
     background: #f3f3f3;
@@ -307,12 +324,31 @@ tbody tr:nth-child(even) {
     background: #ffffff;
 }
 
+/* Додаткові стилі для обводки і рядків */
+tbody tr {
+    border-bottom: 1px solid #ddd; /* Розділення рядків */
+}
 
-td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    color: #3a3a3a; 
-} 
+table, td {
+    border: 1px solid #ddd; /* Створює сітку між комірками */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .actions {
     text-align: center;
@@ -425,3 +461,233 @@ td {
     position: fixed;
     z-index: 999;
 }  
+
+a {
+    text-decoration: none; /* Прибирає підкреслення */
+    color: #3a3a3a; /* Колір посилання */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 15px;
+}
+
+.switch input{display: none;}
+
+.slider{
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+.slider:before{
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 0;
+    bottom: -1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    box-shadow: 0px 0 10px 0px rgba(70, 70, 70, 0.3);
+}
+
+input:checked + .slider {
+    background-color: #00cb84;
+}
+
+input:focus + .slider{
+    background-color: 0 0 1px #00cb84;
+}
+
+input:checked + .slider:before {
+-webkit-transform: translateX(16px);
+-ms-transform: translateX(16px);
+transform: translateX(16px);
+}
+.slider.round{
+    border-radius: 34%;
+}
+.slider.round:before{
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+/* Стилі для хедера */
+header {
+    width: 100%;
+    background-color: #3a3a3a; /* Колір фону */
+    padding: 10px 0; /* Додано відступи для вертикального простору */
+    box-sizing: border-box;
+    margin-top: 0; /* Вимкнули відступ від верху */
+    height: 80px; /* Встановлено висоту хедера */
+}
+
+/* Wrapper для розташування елементів */
+.wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+
+/* Логотип */
+.w20 {
+    width: 20%; /* Встановлено ширину 20% */
+}
+
+.w20.logo img {
+    width: auto;
+    height: 50px; /* Збільшено висоту логотипу */
+}
+
+/* Меню */
+.w70 {
+    width: 70%; /* Встановлено ширину 70% */
+}
+
+#menu {
+    display: flex;
+    align-items: center; /* Центрує елементи меню по вертикалі */
+    margin-left: auto; /* Зміщує меню на праву сторону */
+    justify-content: flex-end; /* Додаємо вирівнювання меню праворуч */
+}
+
+/* Кнопка для відкриття меню */
+.fas.fa-bars {
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: 10px; /* Відступ для кнопки відкриття меню */
+}
+
+/* Списки для меню */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+/* Активний клас для меню */
+ul.active {
+    display: block;
+}
+
+li {
+    margin-left: 20px;
+}
+
+li a,
+li .fas {
+    text-decoration: none;
+    color: #fff; /* Колір тексту на білий */
+    font-size: 16px;
+    display: flex;
+    align-items: center; /* Центрує елементи меню по вертикалі */
+}
+
+li a.router-link-active {
+    color: #007bff;
+}
+
+/* Зміщення лінків правіше до логотипу */
+#menu ul:first-child {
+    margin-left: auto; /* Відштовхує лінки правіше */
+}
+
+/* Меню праворуч для Campaigns і Users */
+#menu .admin-links {
+    margin-left: auto; /* Це буде розташовувати посилання праворуч */
+}
+
+/* Кнопка logout */
+#user-info {
+    display: none;
+    position: absolute;
+    top: 40px;  /* Відстань від профілю */
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+#user-info.active {
+    display: block;
+}
+
+/* Коло для користувача */
+#w10.al {
+    width: 10%; /* Встановлено ширину 10% */
+    position: relative;
+    margin-left: 20px;
+}
+
+#user-circle {
+    width: 40px; /* Збільшено коло для користувача */
+    height: 40px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#user-circle:hover {
+    background-color: #0056b3;
+}
+
+/* Стрілочка для відкриття меню */
+.fas.fa-caret-down {
+    font-size: 16px;
+    cursor: pointer;
+    color: white; /* Колір стрілочки */
+}
+
+/* Відступи для меню в правій частині */
+#user-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Залишає користувацьку іконку на лівій стороні */
+    position: relative; /* Для абсолютного позиціонування logout меню */
+}
+
+#user-info a {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    padding: 5px;
+}
+
+#user-info a:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
