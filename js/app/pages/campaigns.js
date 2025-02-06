@@ -9,6 +9,7 @@ export const campaigns = {
             q:"",
             sort:"",
             loader:1,
+            iChart:-1,
             id:0,
             type:0,
             all:true
@@ -40,7 +41,7 @@ export const campaigns = {
             var self = this;
             var data = self.parent.toFormData(self.parent.formData);
             if(this.date!="") data.append('date', this.date);
-            if(this.date2!="") data.append('date2', this.date);
+            if(this.date2!="") data.append('date2', this.date2);
             self.loader=1;
             axios.post(this.parent.url+"/site/getCampaigns?auth="+this.parent.user.auth,data).then(function(response){
                 self.data=response.data;
@@ -88,8 +89,8 @@ export const campaigns = {
     },
     template:`
         <div class="inside-content">
+        <div id='spinner' v-if="loader"></div>
             <Header ref="header" />
-            <div id="spinner" v-if="loader"></div>
             <div class="wrapper">
                 <div class="flex">
                     <div class="w20 ptb30">
@@ -160,7 +161,13 @@ export const campaigns = {
                                         </a>
                                     </td>
                                     <td class="actions">
-                                        <a href="" @click.prevent="parent.formData = item;del();">
+                                        <router-link :to="'/campaign/+item.id'">
+                                            <i class="fas fa-edit"></i>
+                                        </router-link>
+                                         <a href="#" @click.prevent="parent.formData = item;iChart = i;$refs.chart.active=1;line(item)">
+                                            <i class="fas fa-chart-bar"></i>
+                                        </a>
+                                        <a href="#" @click.prevent="parent.formData = item;del();">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </td>
