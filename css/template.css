@@ -533,6 +533,27 @@ transform: translateX(16px);
 }
 
 
+.btnS {
+    background-color: #00c273; /* Зелений фон */
+    color: #ffffff; /* Білий текст */
+    padding: 10px 20px;
+    border-radius: 8px; /* Заокруглені краї */
+    border: none;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Відстань між текстом і іконкою */
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btnS i {
+    font-size: 18px; /* Розмір іконки */
+}
+
+.btnS:hover {
+    background-color: #00a15d; /* Трохи темніший зелений при наведенні */
+}
 
 
 
@@ -546,6 +567,7 @@ header {
     box-sizing: border-box;
     margin-top: 0; /* Вимкнули відступ від верху */
     height: 80px; /* Встановлено висоту хедера */
+    
 }
 
 /* Wrapper для розташування елементів */

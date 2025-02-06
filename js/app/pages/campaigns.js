@@ -54,7 +54,7 @@ export const campaigns = {
             self.parent.formData.copy="";
             var data = self.parent.toFormData(self.parent.formData);
 
-            axios.post(this.parent.url+"/site/actionCampaigns?auth="+this.parent.user.auth,data).then(function(response) {
+            axios.post(this.parent.url+"/site/actionCampaign?auth="+this.parent.user.auth,data).then(function(response) {
                 self.$refs.new.active=0;
                 if(self.parent.formData.id){
                     self.$refs.header.$refs.msg.successFun("Successfully updated campaign!");
@@ -97,7 +97,7 @@ export const campaigns = {
                     </div>
                     <div class="w60 ptb20 ac"><input type="date" v-model="date" @change="get()" /> - <input type="date" v-model="date2" @change="get()" /></div>
                     <div class="w20 al ptb20">
-                    <a class="btnS" href="#" @click.prevent="parent.formData={};$refs.new.active=1"><i class="fas fa plus"></i> New</a> 
+                    <a class="btnS" href="#" @click.prevent="parent.formData={};$refs.new.active=1"><i class="fas fa-plus"></i> New</a> 
                     </div>
                 </div>
                 <popup ref="new" :title="(parent.formData && parent.formData.id) ? 'Edit campaign' : 'New campaign'"> 
@@ -175,3 +175,4 @@ export const campaigns = {
         </div>
     `
 };
+

@@ -23,7 +23,7 @@ export const header = {
 
     },
     template:`
-    <header>
+    <header class="header">
     <div class="wrapper">
         <div class="flex">
             <div class="w20 logo">
