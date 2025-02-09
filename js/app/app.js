@@ -3,12 +3,13 @@ import {header} from './widgets/header.js';
 import {msg} from './widgets/msg.js';
 import {popup} from './widgets/popup.js';
 import {toogle} from './widgets/toogle.js';
+import {img} from './widgets/img.js';
 
 document.addEventListener('DOMContentLoaded', function(){
     const main = {
         data() {
             return {
-                url:"https://affiliate.yanbasok.com",
+                url:"http://affiliate.yanbasok.com",
                 user:{name:"", phone:"", email:"", date:"", auth:""},
                 formData:{},
                 title:"",
@@ -87,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function(){
     .component('popup',popup)
     .component('msg',msg)
     .component('toogle',toogle)
+    .component('Image',img)
     .use(router)
     .mount('#content')
 });

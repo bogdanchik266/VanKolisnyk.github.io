@@ -2,7 +2,7 @@ export const msg = {
     data() {
         return {
             alert: "",
-            succes: "",
+            success: "",
             t1: "",
             t2: "",
             confirmTitle: "Please confirm next action",
@@ -32,16 +32,16 @@ export const msg = {
                 el.style.display = "none";
             }, timeout);
         },
-        succesFun(msg) {
-            this.succes = msg;
+        successFun(msg) {
+            this.success = msg;
 
-            if (document.querySelector(".succesMsg")) {
-                document.querySelector(".succesMsg").style = "";
+            if (document.querySelector(".successMsg")) {
+                document.querySelector(".successMsg").style = "";
             }
             clearTimeout(this.t1);
             clearTimeout(this.t2);
             this.t1 = setTimeout(() => {
-                const block = document.querySelector(".succesMsg");
+                const block = document.querySelector(".successMsg");
                 this.fadein(block, 1000, "flex");
                 this.t2 = setTimeout(() => {
                     this.fadeout(block, 1000);
@@ -97,9 +97,9 @@ export const msg = {
         </div>
     </div>
 
-    <div class="succesMsg" v-if="succes">
+    <div class="successMsg" v-if="success">
         <div class="wrapper al">
-            <i class="fas fa-check-circle"></i> {{succes}}
+            <i class="fas fa-check-circle"></i> {{success}}
         </div>
     </div>
 
