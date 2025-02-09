@@ -35,7 +35,7 @@ export const users = {
             var self = this;
             var data = self.parent.toFormData(self.parent.formData);
 
-            axios.post(this.parent.url+"/site/actionUsers?auth="+this.parent.user.auth,data).then(function(response){
+            axios.post(this.parent.url+"/site/actionUser?auth="+this.parent.user.auth,data).then(function(response){
                 if(response.data.error){
                     self.$refs.header.$refs.msg.alertFun(response.data.error);
                     return false;
@@ -98,7 +98,7 @@ export const users = {
             <a class="btnS" href="#" @click.prevent="parent.formData={};$refs.new.active=1"><i class="fas fa-plus"></i> New</a> 
             </div>
         </div>
-        <popup ref="new" :title="{parent.formData && parent.formData.id} ? 	'Edit user' : 'New user'">
+        <popup ref="new" :title="(parent.formData && parent.formData.id) ? 	'Edit user' : 'New user'">
             <div class="form inner-form">
                 <form @submit.prevent="action()" v-if="parent.formData">
                     <div class="row">
