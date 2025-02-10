@@ -25,7 +25,7 @@ export const users = {
             axios.post(this.parent.url+"/site/getUsers?auth="+this.parent.user.auth,data).then(function(response){
                 self.loader=0;
                 self.data = response.data;
-                if(response.data.type && response.data.types[0] && !self.type) self.type = response.data.types[0].id;
+                if(response.data.types && response.data.types[0] && !self.type) self.type = response.data.types[0].id;
                 if(self.uid>-1) self.parent.formData.copy = self.data.items[self.uid].multi;
             }).catch(function(error){
                 self.parent.logout();

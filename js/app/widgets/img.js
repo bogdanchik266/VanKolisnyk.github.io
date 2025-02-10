@@ -26,12 +26,12 @@ export var img = {
     },
     template:`
         <div class="image-preview-area">
-            <a href="" class="select_img" @click.prevent="$refs.input.click()">
+            <a href="#" class="select_img" @click.prevent="$refs.input.click()">
                 <span v-if="value">
                     <img :src="value" class="im">
                 </span>
                 <span v-if="value">
-                    <img src="this.parent.url+'/app/views/images/placeholder.png'">
+                    <img :src="this.parent.url+'/app/views/images/placeholder.png'">
                 </span>
             </a>
         </div>

@@ -260,10 +260,11 @@ h1 {
 .w60 {
     width: 60%;
     text-align: center;
-    margin-top: auto;
-    margin-bottom: auto;
 }
-
+.ptb20{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
 
 input[type="date"] {
@@ -616,6 +617,8 @@ ul {
     padding: 0;
     margin: 0;
     display: flex;
+    justify-content: flex-end;
+    
 }
 
 /* Активний клас для меню */
@@ -626,6 +629,7 @@ ul.active {
 li {
     margin-left: 20px;
     padding: 10px 0; /* Збільшені вертикальні відступи */
+    
 }
 
 li a,
@@ -756,4 +760,38 @@ li a.router-link-active {
 }
 .panel h2{
 text-align: right;
+}
+.panelTop .flex .w50 {
+    text-align: right;
+}
+.tabs.ar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.tabs.ar li {
+    background: white;
+    padding: 10px 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+
+.tabs.ar li.active {
+    border-bottom: 3px solid #00c377;
+}
+.pt10{
+    padding-top: 10px;
+}
+.ptb15{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.actions a {
+    margin: 0 5px; /* Отступы по бокам */
+    display: inline-block; /* Чтобы сохранялась правильная компоновка */
 }

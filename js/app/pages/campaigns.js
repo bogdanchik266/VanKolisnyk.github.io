@@ -208,7 +208,7 @@ export const campaigns = {
                         <div class="flex cubes">
                             <div class="w30 clicks">
                                 <div>Clicks</div>
-                                {{data.items[iChart].click}}
+                                {{data.items[iChart].clicks}}
                             </div>
                             <div class="w30 views">
                                 <div>Views</div>

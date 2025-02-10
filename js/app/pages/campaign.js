@@ -18,9 +18,9 @@ export const campaign = {
     mounted:function(){
         this.parent = this.$parent.$parent;
 
-        if(!this.parent.user){
-            this.parent.logout();
-        }
+        // if(!this.parent.user){
+        //     this.parent.logout();
+        // }
         this.get();
         this.GetFirstAndLastDate();
     },
@@ -76,7 +76,7 @@ export const campaign = {
             var self = this;
             var data = self.parent.toFormData(self.parent.formData);
             
-            axios.post(this.parent.url+"/site/actionCampaign?auth="+this.parent.user.auth.data).then(function(response){
+            axios.post(this.parent.url+"/site/actionCampaign?auth="+this.parent.user.auth,data).then(function(response){
                 self.$refs.new.active=0;
                 if(response.data.error){
                     self.$refs.header.$refs.msg.alertFun(response.data.error);
@@ -111,7 +111,7 @@ export const campaign = {
                 console.log('errors: ',error);
             });
         },
-        del:async function () {
+        delAd:async function () {
             if(await this.$refs.header.$refs.msg.confirmFun("Please confirm next action","Do you want to delete this banner?")){
                 var self = this;
                 var data= self.parent.toFormData(self.parent.formData);
@@ -146,7 +146,12 @@ export const campaign = {
                 }       
                         // console.log(clicks, views);
                 
-                document.getElementById('chartOuter').innerHTML=''
+                document.getElementById('chartOuter').innerHTML=`<div id="chartHints">
+                <div class="chartHintsViews">Views</div>
+                <div class="chartHintsClicks">Clicks</div>
+                <div class="chartHintsLeads">Leads</div>
+                </div>  
+                <canvas id="myChart"></canvas>`;
                 const ctx = document.getElementById('myChart');
                 const xScaleImage={
                     id:"xScaleImage",
@@ -169,7 +174,7 @@ export const campaign = {
                     data:{
                         labels:dates,
                         // images:images,
-                        dataset:[
+                        datasets:[
                             {
                                 label:'Clicks',
                                 bacgroundColor:"#00599D",
@@ -207,7 +212,7 @@ export const campaign = {
                         scales:{
                             y:{
                                 id:'y2',
-                                postion:'right'
+                                position:'right'
                             },
                             x:{
                                 afterFit:(scale)=>{
@@ -250,52 +255,6 @@ export const campaign = {
 
             
 
-                <popup ref="chart" fullscreen="true" title="Chart">
-                    <div class="flex panel 123">
-                        <div class="w30 ptb25"><input type="date" v-model="date" @change="get()" /> - <input type="date" v-model="date2" @change="get()" /> </div>
-                        <div class="w70 al">
-                            <div class="flex cubes">
-                                <div class="w30 clicks">
-                                    <div>Clicks</div>
-                                    {{data.items[iChart].click}}
-                                </div>
-                                <div class="w30 views">
-                                    <div>Views</div>
-                                    {{data.items[iChart].views}}
-                                </div>
-                                <div class="w30 leads">
-                                    <div>Leads</div>
-                                    {{data.items[iChart].leads}}
-                                </div>
-                                <div class="w30 ctr">
-                                    <div>CTR</div>
-                                    {{(data.items[iChart].clicks*100/data.items[iChart].views).toFixed(2)}} %
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex body">
-                        <div class="w30 al filchart">
-                            <div class="itemChart ptb10" v-if="all">
-                                <toogle v-model="all" @update:modelValue="all = $event;checkAll($event)" />
-                                All
-                            </div>
-                            <div class="itemchart ptb10" v-if="data.items[iChart].sites" v-for="s in data.items[iChart].sites">
-                                <toogle v-model="s.include" @update:modelValue="s.include = $event;parent.formData = data.items[iChart];get()" />
-                                {{s.site}}
-                            </div>
-                        </div>
-                        <div class="w70" id="chartOuter">
-                            <div id="chartHints">
-                                <div class="chartHintsViews">Views</div>
-                                <div class="chartHintsClicks">Clicks</div>
-                            </div>
-                            <canvas id="myChart"></canvas>
-                        </div>
-
-
-                    </div>
-                </popup>
 
 
 
@@ -327,6 +286,7 @@ export const campaign = {
                 <a class="btnS" href="#" @click.prevent="parent.formData={};$refs.ad.active=1"><i class="fas fa-plus"></i> New</a> 
             </div>
           </div>
+
           <popup ref="ad" :title="(parent.formData && parent.formData.id) ? 'Edit banner' : 'New banner'">
                 <div class="form inner-form">
                     <form @submit.prevent="actionAd()" v-if="parent.formData">
@@ -359,7 +319,7 @@ export const campaign = {
 
         <popup>
             <div class="flex panel">
-                <div class="w60"><input type="text" placeholder="Search..." v-model="q" @keyup="getDetails()"><input type="text" v-model="q" @keyup="getDetails()"></div>
+                <div class="w60"><input type="text" placeholder="Search..." v-model="q" @keyup="getDetails()"><input type="text" @keyup="getDetails()"></div>
                 <div class="w60 al"></div>
             </div> 
             <br>
@@ -425,7 +385,7 @@ export const campaign = {
                     <tr v-for="(item, i) in data.items">
                         <td class="id">{{item.id}}</td>
                         <td class="id">
-                            <toogle :modelValue="item.published" @update:modelValue="item.published = $event;parent.formData=item;actionAd"/>
+                            <toogle :modelValue="item.published" @update:modelValue="item.published = $event;parent.formData=item;actionAd();"/>
                         </td>
                         <td class="image">
                             <a href="#" @click.prevent="parent.formData=item;$refs.ad.active=1;">
