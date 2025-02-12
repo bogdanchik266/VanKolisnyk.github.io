@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function(){
     const main = {
         data() {
             return {
-                url:"https://affiliate.yanbasok.com",
+                url:"http://affiliate.yanbasok.com",
                 user:{name:"", phone:"", email:"", date:"", auth:""},
                 formData:{},
                 title:"",
@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', function(){
                     if(window.localStorage.getItem("user")){
                         self.user = JSON.parse(window.localStorage.getItem("user"));
                         if(self.$route['path']=='/' && self.user.type=='admin'){
-                            self.page('/campaings');
-                        }else if(['/campaings','campaign','/users','/user'].includes(self.$route['path']) && self.user.type!='admin'){
+                            self.page('/campaigns');
+                        }else if(['/campaigns','/campaign','/users','/user'].includes(self.$route['path']) && self.user.type!='admin'){
                             self.page('/statistics');
                         }else if(['/statistics','/payments','/sites'].includes(self.$route['path']) && self.user.type=='admin'){
                             self.page('/campaigns');
-                        }else if(['/campaigns','/campaign','/users','user','/statistics','/payments','/sites'].includes(self.$route['path'])){
+                        }else if(['/campaigns','/campaign','/users','/user','/statistics','/payments','/sites'].includes(self.$route['path'])){
                             self.page();
-                        }else if(!['/campaigns','/campaign','/users','user','/statistics','/payments','/sites'].includes(self.$route['path'])){
+                        }else if(!['/campaigns','/campaign','/users','/user','/statistics','/payments','/sites'].includes(self.$route['path'])){
                             self.page();
                         }
                     }else{
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function(){
                 });
               },
               logout(){
-                this.user = {name:"", phonee:"", email:"", date:"", auth:""};
+                this.user = {name:"", phone:"", email:"", date:"", auth:""};
                 this.page('/');
                 window.localStorage.setItem('user','');
               },

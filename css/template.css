@@ -15,6 +15,7 @@ html, body {
 .flex {
     display: flex;
     flex-direction: row-reverse; 
+   
 }
 
 
@@ -52,13 +53,16 @@ html, body {
 }
 
 /* Стилі для хедера */
+
 #left-area .header {
     background-color: #3a3a3a; 
     padding: 20px; 
     color: white; 
     margin-bottom: 20px; 
 }
-
+.ac{
+    align-content: center;
+}
 
 #left-area .form {
     text-align: right;
@@ -74,15 +78,34 @@ html, body {
     display: block; 
     margin-bottom: 5px; 
 }
+.row button{
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    line-height: 140%;
 
-.row input,
-.row button {
-    width: 100%; 
-    padding: 12px; 
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
-    box-sizing: border-box; 
 }
+.row input {
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    line-height: 140%;
+
+    transition: border 0.3s ease, box-shadow 0.3s ease; /* Додаємо плавну анімацію */
+    text-align: right;
+}
+
+.row input:focus {
+    outline: none; /* Прибираємо стандартну підсвітку браузера */
+    border-color: #5779ff; /* Колір обводки при фокусі */
+    box-shadow: 0 0 8px #5779ff; /* М'яка тінь навколо інпуту */
+}
+
+
 
 
 .btn {
@@ -114,7 +137,6 @@ html, body {
 }
 
 .al{
-    align-content: center;
     text-align: start;
 }
 @font-face {
@@ -249,8 +271,6 @@ body {
 
 h1 {
     text-align: left;
-    margin: 0;
-    padding: 10px 0;
  
 }
 .w20 {
@@ -273,20 +293,6 @@ input[type="date"] {
     border-radius: 5px;
     color: #3a3a3a; 
 }
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Загальний стиль для таблиці */
 .table {
@@ -332,24 +338,6 @@ tbody tr {
 table, td {
     border: 1px solid #ddd; /* Створює сітку між комірками */
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .actions {
     text-align: center;
 }
@@ -379,7 +367,7 @@ table, td {
     position: absolute;
     z-index: 1000;
     background-color: #fff;
-    border-radius: 8px;
+    border-radius: 0px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     max-width: 500px;
@@ -470,18 +458,6 @@ a {
     text-decoration: none; /* Прибирає підкреслення */
     color: #3a3a3a; /* Колір посилання */
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 .switch{
     position: relative;
@@ -603,7 +579,31 @@ header {
     margin-left: auto; /* Зміщує меню на праву сторону */
     justify-content: flex-end; /* Додаємо вирівнювання меню праворуч */
 }
+#menu ul li a {
+    text-decoration: none;
 
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+
+#menu ul li a.router-link-active {
+    color: #21c17a; 
+    font-weight: 600;
+}
+
+#menu ul li a.router-link-active::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #21c17a;
+    bottom: 0;
+    left: 0;
+    border-radius: 2px;
+}
 /* Кнопка для відкриття меню */
 .fas.fa-bars {
     font-size: 24px;
@@ -644,7 +644,8 @@ li .fas {
 /* Активне посилання */
 li a.router-link-active {
     color: #00c377; /* Зелений колір */
-    text-decoration: underline; /* Підкреслення */
+    text-decoration: underline ; /* Підкреслення */
+
     font-weight: bold;
 }
 
@@ -770,6 +771,7 @@ text-align: right;
     display: flex;
 }
 
+
 .tabs.ar li {
     background: white;
     padding: 10px 20px;
@@ -795,3 +797,318 @@ text-align: right;
     margin: 0 5px; /* Отступы по бокам */
     display: inline-block; /* Чтобы сохранялась правильная компоновка */
 }
+.image-preview-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ccc; /* Лінія навколо елемента */
+    padding: 10px; /* Відступи всередині */
+    margin: 20px auto; /* Центрування контейнера */
+    width: 100%;
+    box-sizing: border-box; /* Включає padding і border в розмір */
+}
+
+.select_img {
+    display: block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.row label {
+    margin-bottom: 5px;
+}
+
+.row textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+}
+.row select {
+    width: 100%;
+    height: 45px; /* Збільшена висота */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Стилі для ховера та фокуса */
+.row select:hover,
+.row select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+.ptb10{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.w30{
+    width: 30%;
+}
+
+
+/* Для екрану шириною 2560px */
+@media (max-width: 2000px) {
+
+
+    #left-area .form {
+        padding: 150px;
+    }
+
+}
+/* Для екрану шириною 2560px */
+@media (max-width: 1500px) {
+
+
+    #left-area .form {
+        padding: 50px;
+    }
+
+}
+/* Медіа-запити для адаптивної верстки */
+@media (max-width: 1024px) {
+
+
+    #left-area, #right-area {
+        width: 100%;
+    }
+
+    #left-area .form {
+        padding: 50px;
+    }
+
+    #left-area .header h1 {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    #left-area .logo img {
+        width: 100%;
+    }
+    #right-area {
+        display: none; /* Згортаємо правий банер */
+    }
+}
+
+
+@media (max-width: 768px) {
+    .panel h2 {
+        text-align: center;
+    }
+    .ptb30 {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .panel {
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .panel h1{
+
+        text-align: right;
+        
+    }
+    #left-area .header h1 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    #left-area .form {
+        padding: 60px;
+    }
+    th, td {
+        padding: 5px;
+
+    }
+        /* Сховуємо основне меню та показуємо бургер */
+        #menu ul {
+            display: none;
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background-color: #3a3a3a;
+            flex-direction: column;
+            align-items: center;
+        }
+        #menu i.fas.fa-bars {
+            display: block;
+        }
+        /* Показуємо меню, коли воно активне */
+        #menu ul.active {
+            display: flex;
+        }
+        /* Додаємо сірий фон для всього екрану */
+        body.menu-active {
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+        }
+        /* Для іконки хрестика */
+        #menu ul li.al i.fas.fa-times {
+            font-size: 30px;
+            color: white;
+        }
+        #menu ul li {
+            margin: 15px 0;
+        }
+        /* Псевдоелементи для сірого фону */
+        #menu ul.active:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+        .fa-bars:before {
+            content: "\f0c9";
+            color: white;
+        }
+}
+@media (max-width: 541px){
+    .w30 {
+        width: 50%;
+    }
+}
+@media (max-width: 425px) {
+
+    .table {
+        font-size: 10px;
+    }
+    #left-area .header h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    #left-area .form {
+        padding: 10px;
+    }
+
+    #right-area img {
+        object-position: center;
+    }
+    
+}
+
+@media (max-width: 375px) {
+    #left-area .header h1 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    #left-area .form {
+        padding: 20px;
+    }
+
+    #right-area img {
+        object-position: center;
+    }
+}
+
+@media (max-width: 320px) {
+    #left-area .header h1 {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    #left-area .form {
+        padding: 10px;
+    }
+
+    #right-area img {
+        object-position: center;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cubes{
+    padding: 1%;
+    align-items: center;
+    height: 100%;
+}
+.cubes .w30{
+border: #000 1px solid;
+font-size: 30px;
+padding: 5px;
+}
+
+
+.cubes .w30 div{
+font-size: 14px;
+}
+.clicks{
+background-color: #004e93;
+color: #fff;
+border-radius: 0 10px 10px 0;
+}
+.views{
+background-color: #4700ae;
+color: #fff;
+}
+.leads{
+background-color: #319201;
+color: #fff;
+}
+.ctr{
+background-color: #fefefe;
+border-radius: 10px 0 0 10px;
+}
+
+.select_img img{
+    width: 50%;
+}
+
+.w30 h1{
+    text-align: right;
+}
+.ptb25{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.ac input {
+    border-radius: 10px;
+    border: 1px solid #c0c0c0;
+    background-color: #f0f7fa;
+    padding: 10px;
+}
+.itemChart{
+    align-items: right;
+}
+.chartHintsClicks{
+ text-align: right;
+}
+

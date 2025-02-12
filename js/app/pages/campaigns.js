@@ -101,7 +101,7 @@ export const campaigns = {
                     }
                 }
 
-                document.getElementById('chartOuter').innerHTML = '<div id="chartHints"><div class="chartHintsViews">Views</div><div class="chartHintsClicks">Clicks</div><div class="chartHintsLeads">Leads</div><canvas id="myChart"></canvas></div>'
+                document.getElementById('chartOuter').innerHTML = '<div id="chartHints"><div class="chartHintsViews">Views</div><div class="chartHintsClicks">Clicks</div><canvas id="myChart"></canvas></div>'
                 const ctx = document.getElementById('myChart');
                 const xScaleImage = {
                     id:"xScaleImage",
@@ -158,7 +158,7 @@ export const campaigns = {
                             }
                         },
                         categoryPercentage: 0.2,
-                        barPercetage: 0.8,
+                        barPercentage: 0.8,
 
                         scales:{
                             y:{

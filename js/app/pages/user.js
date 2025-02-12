@@ -96,7 +96,7 @@ export const user = {
             var self = this;
             var data = self.parent.toFormData(self.parent.formData);
             data.append('uid',this.parent.$route.params.id);
-            axios.post(this.parent.url+"/site/deleteStatistic?auth="+this.parent.user.auth,data).then(function(response){
+            axios.post(this.parent.url+"/site/actionStatistic?auth="+this.parent.user.auth,data).then(function(response){
                 if(response.data.error){
                  self.$refs.header.$refs.msg.alertFun(response.data.error);
                  return false;
@@ -120,7 +120,7 @@ export const user = {
             var self = this;
             var data = self.parent.toFormData(self.parent.formData);
             data.append('uid',this.parent.$route.params.id);
-            axios.post(this.parent.url+"/site/deletePayment?auth="+this.parent.user.auth,data).then(function(response){
+            axios.post(this.parent.url+"/site/actionPayment?auth="+this.parent.user.auth,data).then(function(response){
                 if(response.data.error){
                  self.$refs.header.$refs.msg.alertFun(response.data.error);
                  return false;
@@ -139,7 +139,7 @@ export const user = {
                 console.log('errors: ',error);
             });
         },
-        dePayment:async function () {
+        delPayment:async function () {
             if(await this.$refs.header.$refs.msg.confirmFun("Please confirm next action","Do you want to delete this payment?")){
                 var self = this;
                 var data= self.parent.toFormData(self.parent.formData);
@@ -247,7 +247,7 @@ export const user = {
                             }
                         },
                         categoryPercentage: 0.2,
-                        barPercetage: 0.8,
+                        barPercentage: 0.8,
 
                         scales:{
                             y:{
@@ -272,12 +272,12 @@ export const user = {
     <div class="panelTop">
         <div class="wrapper">
             <div class="flex">
-                <div class="w30 ptb30">
+                <div class="w30 ptb30 pb0">
                     <h1 v-if="data && data.info">{{data.info.user}}</h1>
                 </div>
                 <div class="w50"></div>
                 <div class="w20 al ptb20 pb0">
-                <a class="btnS" href="#" @click.prevent="parent.formData=data.user;$refs.new.active=1"><i class="fas fa-edit"></i>Edit user</a> 
+                <a class="btnS" href="#" @click.prevent="parent.formData=user;$refs.new.active=1"><i class="fas fa-edit"></i>Edit user</a> 
                 </div>
             </div>
             <div class="flex" v-if="data && data.info">
@@ -363,7 +363,7 @@ export const user = {
                     </div>
                 </div>
                 <div class="flex body">
-                    <div class="w30 ar filchart">
+                    <div class="w30 ar filchart"></div>
                     <div class="w70" id="chartOuter">
                         <div id="chartHints">
                             <div class="chartHintsViews">Views</div>
@@ -435,7 +435,7 @@ export const user = {
                 </div>
                 <div class="w50"></div>
                 <div class="w20 ptb15 al">
-                    <a class="btnS" href="#" @click.prevent="parent.formData=data.info;$refs.payment.active=1"><i class="fas fa-plus"></i>Add payment</a> 
+                    <a class="btnS" href="#" @click.prevent="parent.formData={};$refs.payment.active=1"><i class="fas fa-plus"></i>Add payment</a> 
                 </div>
             </div>
 

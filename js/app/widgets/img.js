@@ -6,7 +6,7 @@ export var img = {
     },
     mounted(){
         this.parent = this.$parent.$parent.$parent.$parent;
-        if(this.modelValue!=''){
+        if(this.modelValue!=undefined){
             this.value=this.parent.url+'/'+this.modelValue;
         }
     },
@@ -30,7 +30,7 @@ export var img = {
                 <span v-if="value">
                     <img :src="value" class="im">
                 </span>
-                <span v-if="value">
+                <span v-if="!value">
                     <img :src="this.parent.url+'/app/views/images/placeholder.png'">
                 </span>
             </a>

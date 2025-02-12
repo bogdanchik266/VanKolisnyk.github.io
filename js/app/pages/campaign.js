@@ -149,7 +149,6 @@ export const campaign = {
                 document.getElementById('chartOuter').innerHTML=`<div id="chartHints">
                 <div class="chartHintsViews">Views</div>
                 <div class="chartHintsClicks">Clicks</div>
-                <div class="chartHintsLeads">Leads</div>
                 </div>  
                 <canvas id="myChart"></canvas>`;
                 const ctx = document.getElementById('myChart');
@@ -252,12 +251,53 @@ export const campaign = {
                 </div>
             </div>
         </div>
+        
+<popup ref="chart" fullscreen="true" title="Chart">
+<div class="flex panel">
+    <div class="w30 ptb25"><input type="date" v-model="date" @change="get()" /> - <input type="date" v-model="date2" @change="get()" /> </div>
+    <div class="w70 al">
+        <div class="flex cubes">
+            <div class="w30 clicks">
+                <div>Clicks</div>
+                {{data.items[iChart].clicks}}
+            </div>
+            <div class="w30 views">
+                <div>Views</div>
+                {{data.items[iChart].views}}
+            </div>
+            <div class="w30 leads">
+                <div>Leads</div>
+                {{data.items[iChart].leads}}
+            </div>
+            <div class="w30 ctr">
+                <div>CTR</div>
+                {{(data.items[iChart].clicks*100/data.items[iChart].views).toFixed(2)}} %
+            </div>
+        </div>
+    </div>
+</div>
+<div class="flex body">
+    <div class="w30 ar filchart">
+        <div class="itemChart ptb10" v-if="all">
+            <toogle v-model="all" @update:modelValue="all = $event;checkAll($event)" />
+            All
+        </div>
+        <div class="itemchart ptb10" v-if="data.items[iChart].sites" v-for="s in data.items[iChart].sites">
+            <toogle v-model="s.include" @update:modelValue="s.include = $event;parent.formData = data.items[iChart];get()" />
+            {{s.site}}
+        </div>
+    </div>
+    <div class="w70" id="chartOuter">
+        <div id="chartHints">
+            <div class="chartHintsViews">Views</div>
+            <div class="chartHintsClicks">Clicks</div>
+        </div>
+        <canvas id="myChart"></canvas>
+    </div>
 
-            
 
-
-
-
+</div>
+</popup>
             <popup ref="new" :title="(parent.formData && parent.formData.id) ? 'Edit campaign' : 'New campaign'"> 
             <div class="form inner-form">
                 <form @submit.prevent="action()" v-if="parent.formData">
